@@ -50,3 +50,76 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+
+
+# ===============================
+#   BACKEND
+# ---------------------------------------
+# Maven
+# ---------------------------------------
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ---------------------------------------
+# IntelliJ IDEA
+# ---------------------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# ---------------------------------------
+# Eclipse / Spring Tool Suite
+# ---------------------------------------
+.project
+.classpath
+.settings/
+.springBeans
+.apt_generated/
+.factorypath
+bin/
+tmp/
+
+# ---------------------------------------
+# Logs
+# ---------------------------------------
+*.log
+
+# ---------------------------------------
+# OS / Windows
+# ---------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ---------------------------------------
+# MacOS
+# ---------------------------------------
+.DS_Store
+
+# ---------------------------------------
+# Java general
+# ---------------------------------------
+*.class
+hs_err_pid*
+replay_pid*
+
+# ---------------------------------------
+# Spring Boot
+# ---------------------------------------
+# Evitar subir archivos generados automáticamente
+*.jar
+*.war
+
+# ---------------------------------------
+# Credenciales (por seguridad)
+# ---------------------------------------
+#application-dev.properties
+#application-prod.properties
