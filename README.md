@@ -40,7 +40,7 @@ Este sistema está desarrollado utilizando **Angular** (front-end) y **Spring Bo
 ## 🎓 Créditos
 Proyecto desarrollado por:
 
-**Piero Samir Sotomayor Pinto**
+**Piero Samir Sotomayor Pinto**,
 **Angélica Geraldine Quispe Manayay**
 
 Estudiantes de **Ingeniería de Sistemas Computacionales**
