@@ -45,6 +45,8 @@ public class Usuario {
     // ======================
     // Constructors
     // ======================
+    
+	public Usuario() {	}
     		
     // ======================
     // Getters & Setters
