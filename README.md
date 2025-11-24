@@ -37,6 +37,51 @@ Este sistema está desarrollado utilizando **Angular** (front-end) y **Spring Bo
 - Postman
 - Xampp
 
+## ⚙️ Cómo Ejecutar el Proyecto
+### 🔧 1. Clonar el repositorio
+```
+git clone https://github.com/tu-usuario/sistema-citas-dentales.git
+```
+
+### 2. Configurar base de datos (backend/Spring Boot)
+Crear una base de datos en MySQL (Xampp):
+```sql
+CREATE DATABASE consultorio_dental;
+```
+
+Modificar el application.properties o application.yml:
+```java
+spring.datasource.url=jdbc:mysql://localhost:3306/sistema_citas_dental
+spring.datasource.username=TU_USUARIO
+spring.datasource.password=TU_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+### 3. Ejecutar el backend
+Desde Spring Tool Suite:
+Run As → Spring Boot App
+
+O desde consola:
+```
+mvn spring-boot:run
+```
+Backend disponible en:
+👉 http://localhost:8080
+
+### 🌐 Configurar Frontend (Angular)
+### 4. Instalar dependencias
+En la carpeta /frontend/:
+```
+npm install
+
+```
+### 5. Ejecutar Angular
+```
+ng serve -o
+```
+Frontend disponible en:
+👉 http://localhost:4200
+
 ## 🎓 Créditos
 Proyecto desarrollado por:
 
