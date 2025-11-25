@@ -16,14 +16,14 @@ Este sistema está desarrollado utilizando **Angular** (front-end) y **Spring Bo
 
 ## 🧑‍💻Tecnologías Utilizadas
 ### Frontend
-- Angular 17+
+- Angular 20
 - TypeScript
 - HTML / CSS
 - Bootstrap
 - JWT para autenticación
 
 ### Backend
-- Java 17+
+- Java 21
 - Spring Boot 3+
 - Spring Web
 - Spring Data JPA (Hibernate)
