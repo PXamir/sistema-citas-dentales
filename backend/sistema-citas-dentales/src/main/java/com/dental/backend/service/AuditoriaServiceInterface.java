@@ -8,6 +8,6 @@ public interface AuditoriaServiceInterface {
     List<Auditoria> listar();
     Optional<Auditoria> listarId(Integer id);
     Auditoria getId(Integer id);
-    int save(int auditoria);
+    Auditoria save(Auditoria auditoria);
     void delete(Integer id);
 }
