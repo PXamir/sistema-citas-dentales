@@ -1,0 +1,29 @@
+.card {
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+.field {
+    margin-bottom: 12px;
+}
+
+.error {
+    color: darkred;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    border-radius: 6px;
+}

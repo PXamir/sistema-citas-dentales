@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="header">
+        <h3>Bienvenido usuario: <strong>{{ user }}</strong></h3>
+        <button (click)="logout()">Cerrar sesión</button>
+    </div>
+
+    <div class="links" style="margin-top:1rem">
+        <a [routerLink]="['/citas']" class="btn">Citas</a>
+    </div>
+    
+    <p>Contenido protegido (solo accesible si está logeado).</p>
+    
+</div>

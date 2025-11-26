@@ -1,0 +1,93 @@
+/* Fondo general */
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4da6ff, #80d4ff);
+  padding: 1rem;
+}
+
+/* Tarjeta centrada */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Títulos */
+.title {
+  text-align: center;
+  color: #0059b3;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+/* Grupo de inputs */
+.input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.input-group input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Botón */
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.btn-login:disabled {
+  background: #a6c7ff;
+  cursor: not-allowed;
+}
+
+.btn-login:hover:not(:disabled) {
+  background: #005fcc;
+}
+
+/* Mensaje de error */
+.error-msg {
+  background: #ffcccc;
+  color: #a80000;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
