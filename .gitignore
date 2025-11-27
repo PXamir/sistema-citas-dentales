@@ -119,7 +119,6 @@ replay_pid*
 *.war
 
 # ---------------------------------------
-# Credenciales (por seguridad)
+#   PROHIBIR subir application.properties
 # ---------------------------------------
-#application-dev.properties
-#application-prod.properties
+sistema-citas-dentales/backend/sistema-citas-dentales/src/main/resources/application.properties
