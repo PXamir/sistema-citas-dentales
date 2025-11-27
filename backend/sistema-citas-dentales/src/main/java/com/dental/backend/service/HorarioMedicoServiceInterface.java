@@ -1,13 +1,17 @@
 package com.dental.backend.service;
 
-import java.util.List;
-import java.util.Optional;
 import com.dental.backend.model.HorarioMedico;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface HorarioMedicoServiceInterface {
+
     List<HorarioMedico> listar();
+
     Optional<HorarioMedico> listarId(Integer id);
-    HorarioMedico getId(Integer id);
-    HorarioMedico save(HorarioMedico horario);
+
+    HorarioMedico save(HorarioMedico h);
+
     void delete(Integer id);
 }

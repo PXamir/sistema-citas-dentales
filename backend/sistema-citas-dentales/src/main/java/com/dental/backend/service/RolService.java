@@ -1,7 +1,7 @@
 package com.dental.backend.service;
 
-import com.dental.backend.model.Auditoria;
-import com.dental.backend.repository.AuditoriaRepository;
+import com.dental.backend.model.Rol;
+import com.dental.backend.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,24 +9,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AuditoriaService implements AuditoriaServiceInterface {
+public class RolService implements RolServiceInterface {
 
     @Autowired
-    private AuditoriaRepository repo;
+    private RolRepository repo;
 
     @Override
-    public List<Auditoria> listar() {
+    public List<Rol> listar() {
         return repo.findAll();
     }
 
     @Override
-    public Optional<Auditoria> listarId(Integer id) {
+    public Optional<Rol> listarId(Integer id) {
         return repo.findById(id);
     }
 
     @Override
-    public Auditoria save(Auditoria aud) {
-        return repo.save(aud);
+    public Rol save(Rol r) {
+        return repo.save(r);
     }
 
     @Override

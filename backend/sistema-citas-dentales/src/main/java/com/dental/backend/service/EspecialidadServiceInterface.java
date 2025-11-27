@@ -1,13 +1,17 @@
 package com.dental.backend.service;
 
-import java.util.List;
-import java.util.Optional;
 import com.dental.backend.model.Especialidad;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface EspecialidadServiceInterface {
+
     List<Especialidad> listar();
+
     Optional<Especialidad> listarId(Integer id);
-    Especialidad getId(Integer id);
-    Especialidad save(Especialidad especialidad);
+
+    Especialidad save(Especialidad esp);
+
     void delete(Integer id);
 }

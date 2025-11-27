@@ -11,3 +11,4 @@ public interface UsuarioServiceInterface {
     Usuario save(Usuario usuario);
     void delete(Integer id);
 }
+

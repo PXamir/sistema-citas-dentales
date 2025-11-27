@@ -1,7 +1,7 @@
 package com.dental.backend.service;
 
-import com.dental.backend.model.Auditoria;
-import com.dental.backend.repository.AuditoriaRepository;
+import com.dental.backend.model.HistorialMedico;
+import com.dental.backend.repository.HistorialMedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,24 +9,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AuditoriaService implements AuditoriaServiceInterface {
+public class HistorialMedicoService implements HistorialMedicoServiceInterface {
 
     @Autowired
-    private AuditoriaRepository repo;
+    private HistorialMedicoRepository repo;
 
     @Override
-    public List<Auditoria> listar() {
+    public List<HistorialMedico> listar() {
         return repo.findAll();
     }
 
     @Override
-    public Optional<Auditoria> listarId(Integer id) {
+    public Optional<HistorialMedico> listarId(Integer id) {
         return repo.findById(id);
     }
 
     @Override
-    public Auditoria save(Auditoria aud) {
-        return repo.save(aud);
+    public HistorialMedico save(HistorialMedico h) {
+        return repo.save(h);
     }
 
     @Override

@@ -1,13 +1,12 @@
 package com.dental.backend.service;
 
+import com.dental.backend.model.Notificacion;
 import java.util.List;
 import java.util.Optional;
-import com.dental.backend.model.Notificacion;
 
 public interface NotificacionServiceInterface {
     List<Notificacion> listar();
     Optional<Notificacion> listarId(Integer id);
-    Notificacion getId(Integer id);
-    Notificacion save(Notificacion notificacion);
+    Notificacion save(Notificacion n);
     void delete(Integer id);
 }

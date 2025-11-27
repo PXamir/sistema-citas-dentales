@@ -1,7 +1,7 @@
 package com.dental.backend.service;
 
-import com.dental.backend.model.Auditoria;
-import com.dental.backend.repository.AuditoriaRepository;
+import com.dental.backend.model.Cancelacion;
+import com.dental.backend.repository.CancelacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,24 +9,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AuditoriaService implements AuditoriaServiceInterface {
+public class CancelacionService implements CancelacionServiceInterface {
 
     @Autowired
-    private AuditoriaRepository repo;
+    private CancelacionRepository repo;
 
     @Override
-    public List<Auditoria> listar() {
+    public List<Cancelacion> listar() {
         return repo.findAll();
     }
 
     @Override
-    public Optional<Auditoria> listarId(Integer id) {
+    public Optional<Cancelacion> listarId(Integer id) {
         return repo.findById(id);
     }
 
     @Override
-    public Auditoria save(Auditoria aud) {
-        return repo.save(aud);
+    public Cancelacion save(Cancelacion c) {
+        return repo.save(c);
     }
 
     @Override

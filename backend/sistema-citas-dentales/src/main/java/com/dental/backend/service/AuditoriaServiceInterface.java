@@ -1,13 +1,17 @@
 package com.dental.backend.service;
 
-import java.util.List;
-import java.util.Optional;
 import com.dental.backend.model.Auditoria;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface AuditoriaServiceInterface {
+
     List<Auditoria> listar();
+
     Optional<Auditoria> listarId(Integer id);
-    Auditoria getId(Integer id);
-    Auditoria save(Auditoria auditoria);
+
+    Auditoria save(Auditoria aud);
+
     void delete(Integer id);
 }
