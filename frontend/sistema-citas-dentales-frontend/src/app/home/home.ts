@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { Auth } from '../auth';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +10,25 @@ import { Auth } from '../auth';
   styleUrls: ['./home.css'],
 })
 export class Home {
-   user: string | null;
+   // Cambiamos a 'any' para poder acceder a .nombre, .email, etc.
+   user: any = null;
 
-  constructor(private auth: Auth, private router: Router) {
-    this.user = this.auth.getUser();
+  constructor(private router: Router) {
+    // 1. Intentamos recuperar al usuario de la memoria del navegador
+    const usuarioGuardado = localStorage.getItem('usuarioSesion');
+
+    if (usuarioGuardado) {
+      // Convertimos el texto JSON a un objeto real
+      this.user = JSON.parse(usuarioGuardado);
+    } else {
+      // Si no hay nadie logueado, lo devolvemos al login
+      this.router.navigate(['/login']);
+    }
   }
 
   logout() {
-    this.auth.logout();
+    // 2. Borramos la sesión de la memoria
+    localStorage.removeItem('usuarioSesion');
     this.router.navigate(['/login']);
   }
 }

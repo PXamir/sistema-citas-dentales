@@ -1,49 +1,58 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from
-  '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Auth } from '../auth';
+import { AuthService } from '../service/auth.service'; // Asegúrate de importar el nuevo servicio
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './login.html',
+  templateUrl: './login.html', // Ojo: Tendrás que editar tu HTML también
   styleUrls: ['./login.css'],
 })
 export class Login {
 
-  form: FormGroup; // declarar sin inicializar con this.fb
+  form: FormGroup;
   msg: string | null = null;
+
   constructor(
     private fb: FormBuilder,
-    private auth: Auth,
+    private authService: AuthService, // Inyectamos el servicio real
     private router: Router,
     private route: ActivatedRoute
   ) {
-//
     this.form = this.fb.group({
-      username: ['Admin', [Validators.required]],
-      password: ['123', [Validators.required, Validators.minLength(3)]],
+      // CAMBIO IMPORTANTE: El backend pide 'email', no 'username'
+      email: ['pepito@test.com', [Validators.required, Validators.email]],
+      password: ['miPasswordSeguro123', [Validators.required, Validators.minLength(3)]],
     });
+
     this.route.queryParamMap.subscribe((map) => {
       this.msg = map.get('msg');
     });
   }
+
   onSubmit() {
-    const { username, password } = this.form.value;
-    const ok = this.auth.login(username!, password!);
-    if (ok) {
-      this.router.navigate(['/home']);
-    } else {
-      this.router.navigate(['/login'], {
-        queryParams: { msg: 'Usuario No valido' },
-      });
-    }
+    if (this.form.invalid) return;
+
+    // Enviamos los datos al backend
+    this.authService.login(this.form.value).subscribe({
+      next: (usuario) => {
+        console.log('Login exitoso:', usuario);
+        localStorage.setItem('usuarioSesion', JSON.stringify(usuario));
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        console.error('Error login:', error);
+        this.msg = 'Usuario o contraseña incorrectos';
+      }
+    });
   }
-  // getters para template
-  get usernameCtrl() {
-    return this.form.get('username');
+
+  // Getters actualizados
+  get emailCtrl() {
+    return this.form.get('email');
   }
   get passwordCtrl() {
     return this.form.get('password');

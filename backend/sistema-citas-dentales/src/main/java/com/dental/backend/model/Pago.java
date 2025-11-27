@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 import com.dental.backend.model.enums.MetodoPago;
-
+import java.math.BigDecimal;
 @Entity
 @Table(name = "pagos")
 public class Pago {
-
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pago")
@@ -19,7 +19,7 @@ public class Pago {
     private Cita cita;
 
     @Column(precision = 10, scale = 2)
-    private Double monto;
+    private BigDecimal monto;
 
     @Enumerated(EnumType.STRING)
     private MetodoPago metodo;
@@ -51,13 +51,14 @@ public class Pago {
 		this.cita = cita;
 	}
 
-	public Double getMonto() {
-		return monto;
-	}
+	public BigDecimal getMonto() {
+        return monto;
+    }
 
-	public void setMonto(Double monto) {
-		this.monto = monto;
-	}
+    // 3. CAMBIO EN EL SETTER
+    public void setMonto(BigDecimal monto) {
+        this.monto = monto;
+    }
 
 	public MetodoPago getMetodo() {
 		return metodo;

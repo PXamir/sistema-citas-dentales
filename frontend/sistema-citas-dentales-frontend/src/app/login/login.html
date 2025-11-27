@@ -12,13 +12,21 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
 
             <div class="input-group">
-                <label>Usuario</label>
-                <input formControlName="username" placeholder="Ingrese su usuario" />
+                <label>Correo Electrónico</label>
+                <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="ejemplo@correo.com"
+                />
             </div>
 
             <div class="input-group">
                 <label>Contraseña</label>
-                <input type="password" formControlName="password" placeholder="Ingrese su contraseña" />
+                <input
+                    type="password"
+                    formControlName="password"
+                    placeholder="Ingrese su contraseña"
+                />
             </div>
 
             <button type="submit" class="btn-login" [disabled]="form.invalid">

@@ -1,13 +1,7 @@
-<div class="card">
-    <div class="header">
-        <h3>Bienvenido usuario: <strong>{{ user }}</strong></h3>
-        <button (click)="logout()">Cerrar sesión</button>
-    </div>
+<div class="container">
+    <h1>Bienvenido, {{ user?.nombre }} {{ user?.apellido }}</h1>
 
-    <div class="links" style="margin-top:1rem">
-        <a [routerLink]="['/citas']" class="btn">Citas</a>
-    </div>
-    
-    <p>Contenido protegido (solo accesible si está logeado).</p>
-    
+    <p>Tu correo es: {{ user?.email }}</p>
+
+    <button (click)="logout()">Cerrar Sesión</button>
 </div>

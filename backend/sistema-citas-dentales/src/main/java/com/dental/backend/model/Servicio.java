@@ -17,7 +17,7 @@ public class Servicio {
     @Column(length = 255)
     private String descrip;
 
-    @Column(precision = 10, scale = 2)
+    @Column
     private Double costo;
 
     @Column(name = "duracion_min")

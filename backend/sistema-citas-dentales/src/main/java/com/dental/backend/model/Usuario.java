@@ -3,7 +3,12 @@ package com.dental.backend.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+import java.util.HashSet;
+import java.util.Set;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.FetchType;
 import com.dental.backend.model.enums.Genero;
 
 @Entity
@@ -42,9 +47,13 @@ public class Usuario {
     @Column(name = "fecha_creado", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime fechaCreado;
 
-    // ======================
-    // Constructors
-    // ======================
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "usuario_rol",
+        joinColumns = @JoinColumn(name = "id_usuario"),
+        inverseJoinColumns = @JoinColumn(name = "id_rol")
+    )
+    private Set<Rol> roles = new HashSet<>();
     
 	public Usuario() {	}
     		
@@ -131,5 +140,11 @@ public class Usuario {
 	public void setFechaCreado(LocalDateTime fechaCreado) {
 		this.fechaCreado = fechaCreado;
 	}
-  
+	public Set<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Rol> roles) {
+        this.roles = roles;
+    }
 }
