@@ -1,7 +1,90 @@
-<div class="container">
-    <h1>Bienvenido, {{ user?.nombre }} {{ user?.apellido }}</h1>
+<div class="dashboard-wrapper">
 
-    <p>Tu correo es: {{ user?.email }}</p>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <i class="icon-calendar">📅</i> <div>
+                    <h1>Sistema de Citas Dentales</h1>
+                    <p class="welcome-text">Bienvenido, {{ user?.nombre || 'Paciente' }} {{ user?.apellido }}</p>
+                </div>
+            </div>
 
-    <button (click)="logout()">Cerrar Sesión</button>
+            <div class="user-actions">
+                <button class="btn-logout" (click)="logout()">
+                    ↪ Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <h2 class="section-title">Panel del Paciente</h2>
+        <p class="section-subtitle">Administra tus citas y perfil desde aquí</p>
+
+        <div class="cards-grid stats-row">
+
+            <div class="card stat-card accent-blue">
+                <div class="card-header">
+                    <span class="icon">🕒</span> Próxima Cita
+                </div>
+                <div class="card-body">
+                    <h3>24/11/2025</h3> <p>10:00 - Limpieza Dental</p>
+                    <small>Dr. Carlos Ramírez</small>
+                </div>
+            </div>
+
+            <div class="card stat-card accent-green">
+                <div class="card-header">
+                    <span class="icon">📅</span> Total de Citas
+                </div>
+                <div class="card-body">
+                    <h3 class="big-number">3</h3>
+                    <p>Citas registradas</p>
+                </div>
+            </div>
+
+            <div class="card stat-card accent-purple">
+                <div class="card-header">
+                    <span class="icon">📋</span> Citas Completadas
+                </div>
+                <div class="card-body">
+                    <h3 class="big-number">1</h3>
+                    <p>Consultas realizadas</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards-grid actions-row">
+
+            <div class="card action-card">
+                <div class="icon-circle bg-blue">
+                    📅
+                </div>
+                <h3>Reservar Cita</h3>
+                <p>Agenda una nueva cita con nuestros especialistas</p>
+                <button class="btn btn-primary" (click)="irAgendar()">Ir a Reservar</button>
+            </div>
+
+            <div class="card action-card">
+                <div class="icon-circle bg-green">
+                    To
+                </div>
+                <h3>Ver Mis Citas</h3>
+                <p>Consulta, reprograma o cancela tus citas</p>
+                <button class="btn btn-outline-green">Ver Citas</button>
+            </div>
+
+            <div class="card action-card">
+                <div class="icon-circle bg-purple">
+                    👤
+                </div>
+                <h3>Mi Perfil</h3>
+                <p>Actualiza tu información personal</p>
+                <button class="btn btn-outline-purple">Ver Perfil</button>
+            </div>
+
+        </div>
+
+    </main>
 </div>
