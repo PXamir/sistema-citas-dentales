@@ -1,42 +1,84 @@
-<div class="login-container">
+<div class="flex items-center justify-center min-h-[calc(100vh-100px)] bg-gradient-to-br from-blue-50 to-white p-4">
 
-    <div class="login-card">
-
-        <h2 class="title">Sistema de Citas Dentales</h2>
-        <p class="subtitle">Inicia sesión para continuar</p>
-
-        <div *ngIf="msg" class="error-msg">
-            {{ msg }}
+    <div class="w-full max-w-md bg-white shadow-lg rounded-xl border">
+      
+      <!-- Header -->
+      <div class="text-center p-6 border-b">
+        <h2 class="text-2xl font-semibold text-blue-600">
+          Iniciar Sesión
+        </h2>
+        <p class="text-gray-600 text-sm">
+          Ingresa tus credenciales para acceder al sistema
+        </p>
+      </div>
+  
+      <!-- Body -->
+      <div class="p-6">
+  
+        <!-- Mensaje de error -->
+        <div *ngIf="msg" class="p-3 mb-4 text-sm text-red-700 bg-red-100 rounded-md">
+          {{ msg }}
         </div>
-
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
-
-            <div class="input-group">
-                <label>Correo Electrónico</label>
-                <input
-                    type="email"
-                    formControlName="email"
-                    placeholder="ejemplo@correo.com"
-                />
-            </div>
-
-            <div class="input-group">
-                <label>Contraseña</label>
-                <input
-                    type="password"
-                    formControlName="password"
-                    placeholder="Ingrese su contraseña"
-                />
-            </div>
-
-            <button type="submit" class="btn-login" [disabled]="form.invalid">
-                Ingresar
-            </button>
-            <div class="register-link">
-                ¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a>
-            </div>
+  
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+  
+          <!-- Email -->
+          <div class="space-y-1">
+            <label for="email" class="text-sm font-medium text-gray-700">
+              Correo Electrónico
+            </label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="ejemplo@correo.com"
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+  
+          <!-- Password -->
+          <div class="space-y-1">
+            <label for="password" class="text-sm font-medium text-gray-700">
+              Contraseña
+            </label>
+            <input
+              id="password"
+              type="password"
+              formControlName="password"
+              placeholder="••••••••"
+              class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+  
+          <!-- Botón de iniciar sesión -->
+          <button
+            type="submit"
+            [disabled]="form.invalid"
+            class="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50"
+          >
+            <span>Iniciar Sesión</span>
+          </button>
+  
+          <!-- Link de registro -->
+          <div class="text-center pt-4 border-t">
+            <p class="text-sm text-gray-600">
+              ¿No tienes cuenta?
+              <a routerLink="/register" class="text-blue-600 hover:underline">
+                Regístrate aquí
+              </a>
+            </p>
+          </div>
+  
+          <!-- Usuarios de prueba -->
+          <div class="bg-blue-50 p-3 mt-4 rounded-md text-xs">
+            <p class="text-gray-700 font-semibold mb-1">Usuarios de prueba:</p>
+            <p class="text-gray-600">Paciente: paciente@dental.com</p>
+            <p class="text-gray-600">Admin: admin@dental.com</p>
+            <p class="text-gray-600">Médico: medico@dental.com</p>
+          </div>
+  
         </form>
-
+      </div>
     </div>
-
-</div>
+  </div>
+  
