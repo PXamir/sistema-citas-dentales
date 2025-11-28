@@ -1,6 +1,8 @@
 package com.dental.backend.controller;
 
+import com.dental.backend.dto.UsuarioResponseDTO;
 import com.dental.backend.model.Usuario;
+import com.dental.backend.service.UsuarioService;
 import com.dental.backend.service.UsuarioServiceInterface;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -16,25 +18,39 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioServiceInterface service;
+    private final UsuarioService usuarioService; // Para convertir a DTO
 
-    public UsuarioController(UsuarioServiceInterface service) {
+    public UsuarioController(UsuarioServiceInterface service, UsuarioService usuarioService) {
         this.service = service;
+        this.usuarioService = usuarioService;
     }
 
+    // ============================
+    // GET /usuarios -> Lista de usuarios DTO
+    // ============================
     @GetMapping
-    public List<Usuario> listar() {
-        return service.listar();
+    public List<UsuarioResponseDTO> listar() {
+        return service.listar()
+                .stream()
+                .map(usuarioService::convertirAResponse)
+                .toList();
     }
 
+    // ============================
+    // GET /usuarios/{id} -> Usuario DTO
+    // ============================
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtener(@PathVariable Integer id) {
+    public ResponseEntity<UsuarioResponseDTO> obtener(@PathVariable Integer id) {
         return service.listarId(id)
-                .map(ResponseEntity::ok)
+                .map(usuario -> ResponseEntity.ok(usuarioService.convertirAResponse(usuario)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // ============================
+    // POST /usuarios -> Crear usuario (devuelve DTO)
+    // ============================
     @PostMapping
-    public ResponseEntity<Usuario> crear(@Valid @RequestBody Usuario nuevo) {
+    public ResponseEntity<UsuarioResponseDTO> crear(@Valid @RequestBody Usuario nuevo) {
 
         Usuario guardado = service.save(nuevo);
 
@@ -43,11 +59,16 @@ public class UsuarioController {
                 .buildAndExpand(guardado.getId())
                 .toUri();
 
-        return ResponseEntity.created(location).body(guardado);
+        UsuarioResponseDTO responseDTO = usuarioService.convertirAResponse(guardado);
+
+        return ResponseEntity.created(location).body(responseDTO);
     }
 
+    // ============================
+    // PUT /usuarios/{id} -> Actualizar (devuelve DTO)
+    // ============================
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> actualizar(
+    public ResponseEntity<UsuarioResponseDTO> actualizar(
             @PathVariable Integer id,
             @Valid @RequestBody Usuario cambios) {
 
@@ -65,9 +86,12 @@ public class UsuarioController {
 
         Usuario actualizado = service.save(actual);
 
-        return ResponseEntity.ok(actualizado);
+        return ResponseEntity.ok(usuarioService.convertirAResponse(actualizado));
     }
 
+    // ============================
+    // DELETE /usuarios/{id}
+    // ============================
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         if (service.listarId(id).isEmpty()) {

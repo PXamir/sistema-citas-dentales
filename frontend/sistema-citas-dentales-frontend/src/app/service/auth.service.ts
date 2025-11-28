@@ -7,19 +7,19 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  // URL de tu Backend Spring Boot
-  private apiUrl = 'http://localhost:8080/auth';
+  // URL de tu Backend Spring Boot (FIJARSE EN APPLICATION.PROPERTIES)
+  private apiUrl = 'http://localhost:8085/auth';
 
   constructor(private http: HttpClient) { }
 
 
   // Método para Login
-  login(credenciales: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credenciales);
+  login(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, data);
   }
 
   // Método para Registro
-  register(datos: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, datos);
+  register(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, data);
   }
 }

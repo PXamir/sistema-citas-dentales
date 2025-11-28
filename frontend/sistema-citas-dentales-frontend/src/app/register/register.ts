@@ -29,7 +29,8 @@ export class Register {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]],
       telefono: ['', [Validators.required]],
-      fechaNacimiento: ['', [Validators.required]] // Input tipo date
+      fechaNacimiento: ['', [Validators.required]], // Input tipo date
+      genero: ['', [Validators.required]],
     });
   }
 
