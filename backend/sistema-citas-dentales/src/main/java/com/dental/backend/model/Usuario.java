@@ -33,6 +33,7 @@ public class Usuario {
     private String telefono;
 
     @Enumerated(EnumType.STRING)
+    
     private Genero genero;
 
     @Column(name = "fecha_nac")
