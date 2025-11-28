@@ -1,0 +1,56 @@
+<div class="register-container">
+    <div class="register-card">
+
+        <h2 class="title">Crear Cuenta</h2>
+        <p class="subtitle">Regístrate como nuevo paciente</p>
+
+        <div *ngIf="msg" [class]="exito ? 'success-msg' : 'error-msg'">
+            {{ msg }}
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label>Nombre</label>
+                    <input formControlName="nombre" placeholder="Tu nombre" />
+                </div>
+                <div class="input-group">
+                    <label>Apellido</label>
+                    <input formControlName="apellido" placeholder="Tu apellido" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+                </div>
+                <div class="input-group">
+                    <label>Teléfono</label>
+                    <input formControlName="telefono" placeholder="999 888 777" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label>Fecha de Nacimiento</label>
+                    <input type="date" formControlName="fechaNacimiento" />
+                </div>
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" formControlName="password" placeholder="Crear contraseña" />
+                </div>
+            </div>
+
+            <button type="submit" class="btn-register" [disabled]="form.invalid">
+                Registrarse
+            </button>
+
+            <div class="login-link">
+                ¿Ya tienes cuenta? <a routerLink="/login">Inicia Sesión aquí</a>
+            </div>
+
+        </form>
+    </div>
+</div>

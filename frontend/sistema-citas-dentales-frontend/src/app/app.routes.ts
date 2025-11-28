@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Login } from './login/login';
 import { Home } from './home/home';
 import { AuthGuard } from './auth-guard';
-
+import { Register } from './register/register';
 import{ Citas } from './citas/citas';
 
 export const routes: Routes = [
@@ -12,6 +12,6 @@ export const routes: Routes = [
 
     {path: 'citas', component: Citas, canActivate: [AuthGuard]},
 
-
+    { path: 'register', component: Register },
     { path: '**', redirectTo: 'login' }
 ];
