@@ -1,0 +1,53 @@
+<div class="cita-wrapper">
+    <div class="cita-card">
+        <h2 class="title">📅 Nueva Cita</h2>
+        <p class="subtitle">Completa los datos para agendar</p>
+
+        <div *ngIf="msg" class="error-msg">{{ msg }}</div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label>Fecha</label>
+                    <input type="date" formControlName="fecha">
+                </div>
+                <div class="input-group">
+                    <label>Hora</label>
+                    <input type="time" formControlName="hora">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Especialista</label>
+                <select formControlName="idMedico">
+                    <option value="">Seleccione un médico</option>
+                    <option *ngFor="let m of medicos" [value]="m.id">
+                        Dr. {{ m.nombre }} {{ m.apellido }} ({{ m.especialidad?.nombre || 'General' }})
+                    </option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Servicio / Tratamiento</label>
+                <select formControlName="idServicio">
+                    <option value="">Seleccione servicio</option>
+                    <option *ngFor="let s of servicios" [value]="s.id">
+                        {{ s.nombre }} - S/. {{ s.costo }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Notas adicionales (Opcional)</label>
+                <textarea formControlName="notas" rows="3" placeholder="Ej: Me duele la muela derecha..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="btn-cancel" (click)="volver()">Cancelar</button>
+                <button type="submit" class="btn-submit" [disabled]="form.invalid">Confirmar Cita</button>
+            </div>
+
+        </form>
+    </div>
+</div>

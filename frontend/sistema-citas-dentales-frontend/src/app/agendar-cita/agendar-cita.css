@@ -1,0 +1,86 @@
+.cita-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    padding: 20px;
+}
+
+.cita-card {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.title { text-align: center; color: #0061f2; margin-bottom: 5px; }
+.subtitle { text-align: center; color: #666; margin-bottom: 25px; }
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-group { margin-bottom: 15px; width: 100%; }
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #444;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #0061f2;
+    outline: none;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    flex: 2;
+    background-color: #0061f2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-submit:disabled { background-color: #ccc; cursor: not-allowed; }
+
+.btn-cancel {
+    flex: 1;
+    background-color: white;
+    border: 1px solid #ddd;
+    color: #666;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.error-msg {
+    color: #d9534f;
+    background: #fdf7f7;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
