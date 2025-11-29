@@ -25,16 +25,19 @@ public class CitaController {
     private final UsuarioRepository usuarioRepo;
     private final MedicoRepository medicoRepo;
     private final ServicioRepository servicioRepo;
-
+    private final CitaRepository citaRepo;
     // Actualizamos el constructor
     public CitaController(CitaServiceInterface service, 
                           UsuarioRepository usuarioRepo,
                           MedicoRepository medicoRepo,
-                          ServicioRepository servicioRepo) {
+                          ServicioRepository servicioRepo,
+                          CitaRepository citaRepo) {
         this.service = service;
         this.usuarioRepo = usuarioRepo;
         this.medicoRepo = medicoRepo;
         this.servicioRepo = servicioRepo;
+        this.citaRepo= citaRepo;
+        
     }
 
     @GetMapping
@@ -117,5 +120,12 @@ public class CitaController {
 
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<Cita>> listarPorUsuario(@PathVariable Integer idUsuario) {
+        // Usamos el repositorio directamente o a través del servicio si lo tienes actualizado
+        // Aquí asumo que inyectaste 'citaRepo' en el constructor como hicimos antes
+        List<Cita> citas = citaRepo.findByUsuarioId(idUsuario);
+        return ResponseEntity.ok(citas);
     }
 }

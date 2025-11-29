@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CitaService } from '../service/cita.service/cita.service';
+import { CitasService } from '../service/cita.service/cita.service';
 
 @Component({
   selector: 'app-agendar-cita',
@@ -20,7 +20,7 @@ export class AgendarCita implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private citaService: CitaService,
+    private citasService: CitasService,
     private router: Router
   ) {
     this.form = this.fb.group({
@@ -47,12 +47,12 @@ export class AgendarCita implements OnInit {
   }
 
   cargarListas() {
-    this.citaService.getMedicos().subscribe({
+    this.citasService.getMedicos().subscribe({
       next: (data) => this.medicos = data,
       error: () => console.warn('Error cargando médicos. ¿El backend está encendido?')
     });
 
-    this.citaService.getServicios().subscribe({
+    this.citasService.getServicios().subscribe({
       next: (data) => this.servicios = data,
       error: () => console.warn('Error cargando servicios.')
     });
@@ -67,7 +67,7 @@ export class AgendarCita implements OnInit {
       idUsuario: this.usuarioId
     };
 
-    this.citaService.registrarCita(citaNueva).subscribe({
+    this.citasService.registrarCita(citaNueva).subscribe({
       next: () => {
         alert('✅ ¡Cita reservada con éxito!');
         this.router.navigate(['/home']);

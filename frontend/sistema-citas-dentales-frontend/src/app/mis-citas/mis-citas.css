@@ -1,0 +1,76 @@
+.citas-container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h2 { color: #0061f2; margin: 0; }
+
+.btn-back {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #666;
+}
+.btn-back:hover { background: #f0f0f0; }
+
+/* Tabla */
+.table-responsive {
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.citas-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.citas-table th, .citas-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.citas-table th {
+    background-color: #f8f9fa;
+    color: #555;
+    font-weight: 600;
+}
+
+.citas-table tr:hover { background-color: #fcfcfc; }
+
+/* Badges (Etiquetas de estado) */
+.badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.badge-blue { background-color: #e1f0ff; color: #0061f2; }   /* Confirmada */
+.badge-orange { background-color: #fff3cd; color: #856404; } /* Pendiente */
+.badge-green { background-color: #d4edda; color: #155724; }  /* Finalizada */
+.badge-red { background-color: #f8d7da; color: #721c24; }    /* Cancelada */
+.badge-gray { background-color: #e2e3e5; color: #383d41; }
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    color: #666;
+}

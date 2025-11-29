@@ -24,8 +24,8 @@ export class Login {
   ) {
     this.form = this.fb.group({
       // CAMBIO IMPORTANTE: El backend pide 'email', no 'username'
-      email: ['pepito@test.com', [Validators.required, Validators.email]],
-      password: ['miPasswordSeguro123', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
 
     this.route.queryParamMap.subscribe((map) => {

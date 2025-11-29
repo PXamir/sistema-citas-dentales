@@ -1,0 +1,42 @@
+<div class="citas-container">
+    <div class="header-section">
+        <h2>📂 Historial de Citas</h2>
+        <button class="btn-back" (click)="volver()">⬅ Volver al Panel</button>
+    </div>
+
+    <div *ngIf="loading" class="loading">Cargando citas...</div>
+
+    <div *ngIf="!loading && citas.length === 0" class="empty-state">
+        <p>No tienes ninguna cita registrada.</p>
+        <button (click)="volver()" class="btn-primary">Agendar mi primera cita</button>
+    </div>
+
+    <div *ngIf="!loading && citas.length > 0" class="table-responsive">
+        <table class="citas-table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Tratamiento</th>
+                    <th>Doctor</th>
+                    <th>Estado</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of citas">
+                    <td>{{ c.fechaCita | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ c.horaCita }}</td>
+                    <td>{{ c.servicio?.nombre }}</td>
+                    <td>Dr. {{ c.medico?.usuario?.apellido }}</td>
+                    <td>
+                        <span class="badge" [ngClass]="getClassEstado(c.estado)">
+                            {{ c.estado }}
+                        </span>
+                    </td>
+                    <td class="notas">{{ c.notas || '-' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

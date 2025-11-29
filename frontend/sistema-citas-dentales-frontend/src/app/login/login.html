@@ -1,42 +1,83 @@
 <div class="login-container">
 
+
+
     <div class="login-card">
 
+
+
         <h2 class="title">Sistema de Citas Dentales</h2>
+
         <p class="subtitle">Inicia sesión para continuar</p>
 
+
+
         <div *ngIf="msg" class="error-msg">
+
             {{ msg }}
+
         </div>
+
+
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
 
-            <div class="input-group">
-                <label>Correo Electrónico</label>
-                <input
-                    type="email"
-                    formControlName="email"
-                    placeholder="ejemplo@correo.com"
-                />
-            </div>
+
 
             <div class="input-group">
-                <label>Contraseña</label>
+
+                <label>Correo Electrónico</label>
+
                 <input
-                    type="password"
-                    formControlName="password"
-                    placeholder="Ingrese su contraseña"
+
+                    type="email"
+
+                    formControlName="email"
+
+                    placeholder="ejemplo@correo.com"
+
                 />
+
             </div>
+
+
+
+            <div class="input-group">
+
+                <label>Contraseña</label>
+
+                <input
+
+                    type="password"
+
+                    formControlName="password"
+
+                    placeholder="Ingrese su contraseña"
+
+                />
+
+            </div>
+
+
 
             <button type="submit" class="btn-login" [disabled]="form.invalid">
+
                 Ingresar
+
             </button>
+
             <div class="register-link">
+
                 ¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a>
+
             </div>
+
         </form>
 
+
+
     </div>
+
+
 
 </div>

@@ -1,14 +1,14 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed } from '@angular/core/testing';
-import { CitaService } from './cita.service';
+import { CitasService } from './cita.service';
 
 describe('Service: Cita', () => {
-  let service: CitaService;
+  let service: CitasService;
   
   beforeEach(() => {
       TestBed.configureTestingModule({});
-      service = TestBed.inject(CitaService);
+      service = TestBed.inject(CitasService);
     });
 
   it('should be created', () => {

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   // URL de tu Backend Spring Boot
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = 'http://localhost:8085/auth';
 
   constructor(private http: HttpClient) { }
 
