@@ -1,7 +1,42 @@
-<div class="container">
-    <h1>Bienvenido, {{ user?.nombre }} {{ user?.apellido }}</h1>
+<h1>Bienvenido</h1>
 
-    <p>Tu correo es: {{ user?.email }}</p>
-
-    <button (click)="logout()">Cerrar Sesión</button>
+<!-- ===================== -->
+<!-- OPCIONES DEL PACIENTE -->
+<!-- ===================== -->
+<div *ngIf="esPaciente">
+  <h2>Funciones de Paciente</h2>
+  <ul>
+    <li><a routerLink="/reservar-cita">Reservar cita</a></li>
+    <li><a routerLink="/mis-citas">Ver mis citas</a></li>
+    <li><a routerLink="/perfil">Ver perfil</a></li>
+    <li><a routerLink="/documentos">Documentos</a></li>
+    <li><a routerLink="/notificaciones">Notificaciones</a></li>
+  </ul>
 </div>
+
+<!-- ===================== -->
+<!-- OPCIONES DEL ADMIN -->
+<!-- ===================== -->
+<div *ngIf="esAdmin">
+  <h2>Gestión Principal</h2>
+  <ul>
+    <li><a routerLink="/admin/citas">Gestión de citas</a></li>
+    <li><a routerLink="/admin/usuarios">Gestión de usuarios</a></li>
+    <li><a routerLink="/admin/medicos">Gestión de médicos</a></li>
+    <li><a routerLink="/admin/servicios">Gestión de servicios</a></li>
+  </ul>
+
+  <h2>Gestión Avanzada</h2>
+  <ul>
+    <li><a routerLink="/admin/consultorios">Gestionar consultorios</a></li>
+    <li><a routerLink="/admin/pagos">Ver pagos</a></li>
+    <li><a routerLink="/admin/inventario">Gestionar inventarios</a></li>
+    <li><a routerLink="/admin/logs">Ver logs (Auditoría)</a></li>
+    <li><a routerLink="/admin/pacientes">Ver pacientes</a></li>
+    <li><a routerLink="/admin/config">Configurar parámetros</a></li>
+    <li><a routerLink="/perfil">Ver perfil</a></li>
+  </ul>
+</div>
+
+<!-- BOTÓN DE CERRAR SESIÓN (COMÚN A TODOS) -->
+<button (click)="logout()">Cerrar sesión</button>

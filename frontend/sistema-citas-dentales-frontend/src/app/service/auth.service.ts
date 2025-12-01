@@ -22,4 +22,23 @@ export class AuthService {
   register(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
+
+  // Método para guardar la sesión
+  saveSession(token: string, roles: string[]) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('roles', JSON.stringify(roles));
+  }
+  
+  // Método para obtener los roles
+  getRoles(): string[] {
+    const roles = localStorage.getItem('roles');
+    return roles ? JSON.parse(roles) : [];
+  }
+  
+  // Método para cerrar la sesión
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('roles');
+  }
+
 }

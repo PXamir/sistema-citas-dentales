@@ -35,12 +35,17 @@ export class Login {
 
   onSubmit() {
     if (this.form.invalid) return;
-
-    // Enviamos los datos al backend
+  
     this.authService.login(this.form.value).subscribe({
-      next: (usuario) => {
-        console.log('Login exitoso:', usuario);
-        localStorage.setItem('usuarioSesion', JSON.stringify(usuario));
+      next: (res) => {
+        console.log('Login exitoso:', res);
+  
+        // ⬅ Guardar token y roles
+        this.authService.saveSession(res.token, res.roles);
+  
+        // Si quieres guardar el email para mostrarlo
+        localStorage.setItem('email', res.email);
+  
         this.router.navigate(['/home']);
       },
       error: (error) => {

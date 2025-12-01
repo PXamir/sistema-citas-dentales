@@ -1,70 +1,123 @@
-<div class="register-container">
-    <div class="register-card">
-
-        <h2 class="title">Crear Cuenta</h2>
-        <p class="subtitle">Regístrate como nuevo paciente</p>
-
-        <div *ngIf="msg" [class]="exito ? 'success-msg' : 'error-msg'">
-            {{ msg }}
-        </div>
-
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
-
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Nombre</label>
-                    <input formControlName="nombre" placeholder="Tu nombre" />
-                </div>
-                <div class="input-group">
-                    <label>Apellido</label>
-                    <input formControlName="apellido" placeholder="Tu apellido" />
-                </div>
+<div class="flex items-center justify-center min-h-[calc(100vh-180px)] bg-gradient-to-br from-blue-50 to-white p-4">
+    <div class="w-full max-w-2xl bg-white rounded-xl shadow-md">
+      
+      <!-- HEADER -->
+      <div class="text-center p-6 border-b">
+        <h2 class="text-2xl text-blue-600 font-bold">Registro de Nuevo Paciente</h2>
+        <p class="text-gray-600">Completa el formulario para crear tu cuenta</p>
+      </div>
+  
+      <div class="p-6">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+  
+          <!-- Nombre + Apellido -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="font-medium">Nombre</label>
+              <input
+                formControlName="nombre"
+                placeholder="Juan"
+                class="input"
+              />
             </div>
-
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" formControlName="email" placeholder="correo@ejemplo.com" />
-                </div>
-                <div class="input-group">
-                    <label>Teléfono</label>
-                    <input formControlName="telefono" placeholder="999 888 777" />
-                </div>
+  
+            <div class="space-y-1">
+              <label class="font-medium">Apellido</label>
+              <input
+                formControlName="apellido"
+                placeholder="Pérez"
+                class="input"
+              />
             </div>
-
-            <!-- 💠 NUEVO CAMPO: GÉNERO -->
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Género</label>
-                    <select formControlName="genero">
-                        <option value="" disabled selected>Seleccione...</option>
-                        <option value="MASCULINO">Masculino</option>
-                        <option value="FEMENINO">Femenino</option>
-                        <option value="OTRO">Otro</option>
-                    </select>
-                </div>
-                <div class="input-group"></div> <!-- Espacio vacío para mantener alineación -->
+          </div>
+  
+          <!-- Email -->
+          <div class="space-y-1">
+            <label class="font-medium">Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="ejemplo@correo.com"
+              class="input"
+            />
+          </div>
+  
+          <!-- Teléfono + Género -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="font-medium">Teléfono</label>
+              <input
+                formControlName="telefono"
+                placeholder="999 888 777"
+                class="input"
+              />
             </div>
-
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Fecha de Nacimiento</label>
-                    <input type="date" formControlName="fechaNacimiento" />
-                </div>
-                <div class="input-group">
-                    <label>Contraseña</label>
-                    <input type="password" formControlName="password" placeholder="Crear contraseña" />
-                </div>
+  
+            <div class="space-y-1">
+              <label class="font-medium">Género</label>
+  
+              <select
+                formControlName="genero"
+                class="input"
+              >
+                <option value="" disabled>Seleccione…</option>
+                <option value="MASCULINO">Masculino</option>
+                <option value="FEMENINO">Femenino</option>
+                <option value="OTRO">Otro</option>
+              </select>
             </div>
-
-            <button type="submit" class="btn-register" [disabled]="form.invalid">
-                Registrarse
-            </button>
-
-            <div class="login-link">
-                ¿Ya tienes cuenta? <a routerLink="/login">Inicia Sesión aquí</a>
+          </div>
+  
+          <!-- Fecha Nacimiento -->
+          <div class="space-y-1">
+            <label class="font-medium">Fecha de Nacimiento</label>
+            <input type="date" formControlName="fechaNacimiento" class="input" />
+          </div>
+  
+          <!-- Contraseña + Confirmación -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <label class="font-medium">Contraseña</label>
+              <input
+                type="password"
+                formControlName="password"
+                placeholder="••••••••"
+                class="input"
+              />
             </div>
-
+  
+            <div class="space-y-1">
+              <label class="font-medium">Confirmar Contraseña</label>
+              <input
+                type="password"
+                formControlName="confirmPassword"
+                placeholder="••••••••"
+                class="input"
+              />
+            </div>
+          </div>
+  
+          <!-- Botón -->
+          <button
+            type="submit"
+            class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow"
+            [disabled]="form.invalid"
+          >
+            Registrarse
+          </button>
+  
+          <!-- Link a login -->
+          <div class="text-center pt-4 border-t">
+            <p class="text-sm text-gray-600">
+              ¿Ya tienes cuenta?
+              <a routerLink="/login" class="text-blue-600 hover:underline">
+                Inicia sesión
+              </a>
+            </p>
+          </div>
+  
         </form>
+      </div>
     </div>
-</div>
+  </div>
+  

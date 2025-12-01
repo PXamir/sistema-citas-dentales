@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,25 +11,39 @@ import { Router, RouterLink } from '@angular/router';
   styleUrls: ['./home.css'],
 })
 export class Home {
-   // Cambiamos a 'any' para poder acceder a .nombre, .email, etc.
-   user: any = null;
 
-  constructor(private router: Router) {
-    // 1. Intentamos recuperar al usuario de la memoria del navegador
-    const usuarioGuardado = localStorage.getItem('usuarioSesion');
+  email: string | null = null;
+  roles: string[] = [];
 
-    if (usuarioGuardado) {
-      // Convertimos el texto JSON a un objeto real
-      this.user = JSON.parse(usuarioGuardado);
-    } else {
-      // Si no hay nadie logueado, lo devolvemos al login
+  esPaciente = false;
+  esAdmin = false;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    // 1. Leer token
+    const token = localStorage.getItem('token');
+    if (!token) {
       this.router.navigate(['/login']);
+      return;
     }
+
+    // 2. Leer email (opcional)
+    this.email = localStorage.getItem('email');
+
+    // 3. Leer roles
+    this.roles = this.authService.getRoles();
+
+    // 4. Determinar qué mostrar
+    this.esPaciente = this.roles.includes('PACIENTE');
+    this.esAdmin = this.roles.includes('ADMIN');
   }
 
   logout() {
-    // 2. Borramos la sesión de la memoria
-    localStorage.removeItem('usuarioSesion');
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }
