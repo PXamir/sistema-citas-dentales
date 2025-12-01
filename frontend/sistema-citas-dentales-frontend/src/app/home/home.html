@@ -1,42 +1,124 @@
-<h1>Bienvenido</h1>
+<!-- PACIENTE -->
+<div *ngIf="esPaciente" class="container mx-auto px-4 py-8">
 
-<!-- ===================== -->
-<!-- OPCIONES DEL PACIENTE -->
-<!-- ===================== -->
-<div *ngIf="esPaciente">
-  <h2>Funciones de Paciente</h2>
-  <ul>
-    <li><a routerLink="/reservar-cita">Reservar cita</a></li>
-    <li><a routerLink="/mis-citas">Ver mis citas</a></li>
-    <li><a routerLink="/perfil">Ver perfil</a></li>
-    <li><a routerLink="/documentos">Documentos</a></li>
-    <li><a routerLink="/notificaciones">Notificaciones</a></li>
-  </ul>
+  <!-- Header -->
+  <header class="flex justify-between items-center mb-6">
+    <div>
+      <h1 class="text-2xl font-bold text-blue-600">
+        Bienvenido, {{ usuario?.nombre }} {{ usuario?.apellido }}
+      </h1>
+      <p class="text-gray-600 text-sm">Administra tus citas y perfil desde aquí</p>
+    </div>
+
+    <button 
+      class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+      (click)="logout()"
+    >
+      Cerrar sesión
+    </button>
+  </header>
+
+  <!-- Tarjetas estadísticas -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+    <div class="border-l-4 border-blue-600 bg-white shadow rounded-lg p-5">
+      <h3 class="text-lg font-semibold flex items-center gap-2 text-blue-600">
+        <span class="material-icons">alarm</span>
+        Próxima cita
+      </h3>
+      <div class="mt-3 text-gray-700">
+        <p class="text-2xl">—</p>
+        <p class="text-sm text-gray-500 mt-1">
+          Sin citas programadas
+        </p>
+      </div>
+    </div>
+
+    <div class="border-l-4 border-green-600 bg-white shadow rounded-lg p-5">
+      <h3 class="text-lg font-semibold flex items-center gap-2 text-green-600">
+        <span class="material-icons">calendar_today</span>
+        Total de citas
+      </h3>
+      <p class="text-3xl text-gray-700 mt-3">—</p>
+      <p class="text-sm text-gray-500">Citas registradas</p>
+    </div>
+
+    <div class="border-l-4 border-purple-600 bg-white shadow rounded-lg p-5">
+      <h3 class="text-lg font-semibold flex items-center gap-2 text-purple-600">
+        <span class="material-icons">check_circle</span>
+        Citas completadas
+      </h3>
+      <p class="text-3xl text-gray-700 mt-3">—</p>
+      <p class="text-sm text-gray-500">Consultas realizadas</p>
+    </div>
+
+  </div>
+
+  <!-- Acciones -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- Reservar cita -->
+    <div 
+      class="bg-white shadow hover:shadow-md transition rounded-lg cursor-pointer p-6 text-center"
+      routerLink="/paciente/agendar"
+    >
+      <div class="w-16 h-16 mx-auto rounded-full bg-blue-100 flex items-center justify-center mb-4">
+        <span class="material-icons text-blue-600 text-4xl">event_available</span>
+      </div>
+      <h3 class="text-lg font-semibold">Reservar Cita</h3>
+      <p class="text-gray-600 text-sm mt-1">
+        Agenda una nueva cita con nuestros especialistas
+      </p>
+      <button 
+        class="bg-blue-600 hover:bg-blue-700 text-white w-full py-2 rounded-lg mt-4"
+      >
+        Ir a Reservar
+      </button>
+    </div>
+
+    <!-- Ver citas -->
+    <div 
+      class="bg-white shadow hover:shadow-md transition rounded-lg cursor-pointer p-6 text-center"
+      routerLink="/paciente/citas"
+    >
+      <div class="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-4">
+        <span class="material-icons text-green-600 text-4xl">schedule</span>
+      </div>
+      <h3 class="text-lg font-semibold">Ver mis citas</h3>
+      <p class="text-gray-600 text-sm mt-1">
+        Consulta, reprograma o cancela tus citas
+      </p>
+      <button 
+        class="w-full py-2 border border-green-600 text-green-600 hover:bg-green-50 rounded-lg mt-4"
+      >
+        Ver Citas
+      </button>
+    </div>
+
+    <!-- Mi perfil -->
+    <div 
+      class="bg-white shadow hover:shadow-md transition rounded-lg cursor-pointer p-6 text-center"
+      routerLink="/paciente/perfil"
+    >
+      <div class="w-16 h-16 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4">
+        <span class="material-icons text-purple-600 text-4xl">person</span>
+      </div>
+      <h3 class="text-lg font-semibold">Mi Perfil</h3>
+      <p class="text-gray-600 text-sm mt-1">
+        Actualiza tu información personal
+      </p>
+      <button 
+        class="w-full py-2 border border-purple-600 text-purple-600 hover:bg-purple-50 rounded-lg mt-4"
+      >
+        Ver Perfil
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-10 text-center text-gray-500 text-sm">
+    © 2025 Sistema de Citas Dentales. Todos los derechos reservados.
+  </footer>
+
 </div>
-
-<!-- ===================== -->
-<!-- OPCIONES DEL ADMIN -->
-<!-- ===================== -->
-<div *ngIf="esAdmin">
-  <h2>Gestión Principal</h2>
-  <ul>
-    <li><a routerLink="/admin/citas">Gestión de citas</a></li>
-    <li><a routerLink="/admin/usuarios">Gestión de usuarios</a></li>
-    <li><a routerLink="/admin/medicos">Gestión de médicos</a></li>
-    <li><a routerLink="/admin/servicios">Gestión de servicios</a></li>
-  </ul>
-
-  <h2>Gestión Avanzada</h2>
-  <ul>
-    <li><a routerLink="/admin/consultorios">Gestionar consultorios</a></li>
-    <li><a routerLink="/admin/pagos">Ver pagos</a></li>
-    <li><a routerLink="/admin/inventario">Gestionar inventarios</a></li>
-    <li><a routerLink="/admin/logs">Ver logs (Auditoría)</a></li>
-    <li><a routerLink="/admin/pacientes">Ver pacientes</a></li>
-    <li><a routerLink="/admin/config">Configurar parámetros</a></li>
-    <li><a routerLink="/perfil">Ver perfil</a></li>
-  </ul>
-</div>
-
-<!-- BOTÓN DE CERRAR SESIÓN (COMÚN A TODOS) -->
-<button (click)="logout()">Cerrar sesión</button>

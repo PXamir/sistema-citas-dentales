@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,40 +9,39 @@ import { AuthService } from '../service/auth.service';
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
-export class Home {
+export class Home implements OnInit {
 
-  email: string | null = null;
-  roles: string[] = [];
+  usuario: any = null;
 
   esPaciente = false;
   esAdmin = false;
+  esMedico = false;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // 1. Leer token
-    const token = localStorage.getItem('token');
-    if (!token) {
+    // Intentar leer usuario guardado
+    const data = localStorage.getItem('usuario');
+
+    if (!data) {
       this.router.navigate(['/login']);
       return;
     }
 
-    // 2. Leer email (opcional)
-    this.email = localStorage.getItem('email');
+    this.usuario = JSON.parse(data);
 
-    // 3. Leer roles
-    this.roles = this.authService.getRoles();
+    // Determinar rol
+    const rol = this.usuario.rol;
 
-    // 4. Determinar qué mostrar
-    this.esPaciente = this.roles.includes('PACIENTE');
-    this.esAdmin = this.roles.includes('ADMIN');
+    this.esPaciente = rol === 'PACIENTE';
+    this.esAdmin   = rol === 'ADMIN';
+    this.esMedico  = rol === 'MEDICO';
   }
 
   logout() {
-    this.authService.logout();
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('usuarioSesion');
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }
